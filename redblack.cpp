@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+#include "redblack.h"
 
 enum Color { ROJO, NEGRO };
 
@@ -149,21 +150,3 @@ public:
         cout << endl;
     }
 };
-int main() {
-    RedBlackTree arbol;
-    arbol.insertar(1);
-    arbol.insertar(2);
-    arbol.insertar(3);
-    arbol.insertar(4);
-    arbol.insertar(5);
-    arbol.insertar(6);
-    arbol.insertar(15);
-    arbol.insertar(7);
-    arbol.insertar(20);
-    arbol.insertar(11);
-
-    cout << "Inorden con colores (R=Rojo, N=Negro): ";
-    arbol.mostrarInorden();
-
-    return 0;
-}
