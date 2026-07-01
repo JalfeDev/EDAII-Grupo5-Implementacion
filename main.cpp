@@ -17,7 +17,7 @@ private:
     string estado;
 
 public:
-    Transaccion(const string& i, const string& co, const string& c, const string& ti, double m, const string& f, const string& h, const string& e) {
+    Transaccion(string i, string co, string c, string ti, double m, string f, string h, string e) {
         id = i;
         cuentaOrigen = co;
         cliente = c;
@@ -215,11 +215,13 @@ public:
     }
 
     int hashFunction(string key) {
-    long long suma = 0;
-    for(int i = 0; i < key.size(); i++) {
-        suma = (suma * 31 + key[i]) % size;
-    }
-    return suma;
+        int suma = 0;
+
+        for(int i = 0; i < key.size(); i++) {
+            suma = suma + key[i];
+        }
+
+        return suma % size;
     }
 
     bool insertar(Transaccion* t) {
@@ -623,7 +625,7 @@ public:
         string campo = "";
 
         while(pos < linea.size() && linea[pos] != ',') {
-            campo += linea[pos];
+            campo = campo + linea[pos];
             pos++;
         }
 
@@ -668,7 +670,7 @@ public:
     }
 
     void cargarArchivo(string nombreArchivo) {
-        string rutaCompleta = "C:\\Users\\Diana & Yerson\\Desktop\\EDA2\\Proyecto Integrador\\" + nombreArchivo;
+        string rutaCompleta = "C:\\Users\\" + "User" + "\\Desktop\\EDA2\\Proyecto Integrador\\" + nombreArchivo;
         ifstream archivo(rutaCompleta.c_str());
         if(!archivo.is_open()) {
             cout << "No se pudo abrir el archivo" << endl;
