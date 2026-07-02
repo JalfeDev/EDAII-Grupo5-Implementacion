@@ -1,4 +1,4 @@
-idTransaccion,cuentaOrigen,cliente,tipo,monto,fecha,hora,estado
+﻿idTransaccion,cuentaOrigen,cliente,tipo,monto,fecha,hora,estado
 TX-000001,002-356150,Pedro Castillo,Deposito,2374.63,2026-11-20,19:03:58,Anulada
 TX-000002,005-741390,Rosa Herrera,Transferencia,10021.27,2026-08-04,09:16:04,Pendiente
 TX-000003,002-240814,Lucia Vega,Transferencia,13346.79,2026-10-16,07:49:30,Anulada

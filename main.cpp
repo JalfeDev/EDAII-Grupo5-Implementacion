@@ -517,7 +517,7 @@ public:
         if(node->getKey() >= inicio && node->getKey() <= fin) {
             cantidadEncontrada++;
 
-            if(muestra < 20) {
+            if(muestra < 151) {
                 node->getData()->mostrar();
                 muestra++;
             }
@@ -668,7 +668,7 @@ public:
     }
 
     void cargarArchivo(string nombreArchivo) {
-        string rutaCompleta = "C:\\Users\\Diana & Yerson\\Desktop\\EDA2\\Proyecto Integrador\\" + nombreArchivo;
+        string rutaCompleta = "C:\\Users\\Marco Ramirez\\OneDrive\\Desktop\\" + nombreArchivo;
         ifstream archivo(rutaCompleta.c_str());
         if(!archivo.is_open()) {
             cout << "No se pudo abrir el archivo" << endl;
@@ -765,7 +765,7 @@ public:
     }
 
     void mostrarOrdenado() {
-        arbol->inOrdenLimitado(50);
+        arbol->inOrdenLimitado(100);
     }
 
     long long claveDesdeFechaHora(string fecha, string hora, string ultimos) {
@@ -952,38 +952,52 @@ int main() {
             cout << "Tiempo consulta por rango: " << duracion.count() << " microsegundos" << endl;
         }
         else if(opcion == 6) {
+            int cantidad;
+            cout << "Cantidad de transacciones a actualizar (usar 10): ";
+            cin >> cantidad;
+
             string id;
             string estado;
 
-            cout << "ID: ";
-            cin >> id;
-
-            cout << "Nuevo estado: ";
-            cin >> estado;
-
             auto inicio = high_resolution_clock::now();
 
-            sistema->actualizarEstado(id, estado);
+            for(int i = 0; i< cantidad; i++){
+                cout << "ID#" << (i+1) << ":";
+                cin >> id;
+
+                cout << "Nuevo estado: ";
+                cin >> estado;
+
+                sistema->actualizarEstado(id, estado);
+            }
+
 
             auto fin = high_resolution_clock::now();
             auto duracion = duration_cast<microseconds>(fin - inicio);
 
-            cout << "Tiempo actualizacion: " << duracion.count() << " microsegundos" << endl;
+            cout << "Tiempo actualizacion("<< cantidad <<"Transacciones): " << duracion.count() << " microsegundos" << endl;
         }
         else if(opcion == 7) {
-            string id;
 
-            cout << "ID a eliminar: ";
-            cin >> id;
+            int cantidad;
+            cout << "Cantidad de transacciones a eliminar (usar 10): ";
+            cin >> cantidad;
+
+            string id;
 
             auto inicio = high_resolution_clock::now();
 
-            sistema->eliminarTransaccion(id);
+            for(int i = 0; i < cantidad; i++) {
+                cout << "ID #" << (i+1) << ": ";
+                cin >> id;
+
+                sistema->eliminarTransaccion(id);
+            }
 
             auto fin = high_resolution_clock::now();
             auto duracion = duration_cast<microseconds>(fin - inicio);
 
-            cout << "Tiempo eliminacion: " << duracion.count() << " microsegundos" << endl;
+            cout << "Tiempo eliminacion (" << cantidad << " transacciones): "<< duracion.count() << " microsegundos" << endl;
         }
         else if(opcion == 8) {
             sistema->mostrarEstadisticas();
